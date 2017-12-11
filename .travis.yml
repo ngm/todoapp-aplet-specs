@@ -17,4 +17,4 @@ before_script:
   - sleep 5
 
 script:
-  - php vendor/bin/codecept run acceptance $(sed 's?\(.*\)?-g \1 ?' eclipse/configs/ProdB.config | tr -d '\r\n')
+  - php vendor/bin/codecept run acceptance $(sed 's?\(.*\)?-g \1 ?' eclipse/configs/$PRODUCT.config | tr -d '\r\n')

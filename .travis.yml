@@ -9,7 +9,7 @@ install:
 
 before_script:
   - git clone https://github.com/ngm/todoapp-aplet
-  - php -S localhost:80 -t todoapp-aplet &
+  - php -S localhost:8080 -t todoapp-aplet &
   - phantomjs --webdriver 4444 &
   - sleep 5
 

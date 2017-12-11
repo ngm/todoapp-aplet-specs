@@ -11,4 +11,7 @@ Given I have created the following todos:
   | Execute evil plans                  |
   | Create evil plans strategy document |
 When I visit my todo list
-Then I should see my todos
+Then I should see the following todos:
+  | Label                               |
+  | Execute evil plans                  |
+  | Create evil plans strategy document |

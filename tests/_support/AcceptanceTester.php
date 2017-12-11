@@ -44,9 +44,15 @@ class AcceptanceTester extends \Codeception\Actor
     /**
      * @Given I have created the following todos:
      */
-    public function iHaveCreatedTheFollowingTodos()
+    public function iHaveCreatedTheFollowingTodos(\Behat\Gherkin\Node\TableNode $todos)
     {
-        throw new \Codeception\Exception\Incomplete("Step `I have created the following todos:` is not defined");
+        foreach ($todos->getRows() as $index => $row) {
+            if ($index === 0) { // first row to define fields
+                $keys = $row;
+                continue;
+            }
+            $this->amOnPage('/add.php?label=' . $row[0]);
+        }
     }
 
     /**
@@ -54,14 +60,28 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function iVisitMyTodoList()
     {
-        throw new \Codeception\Exception\Incomplete("Step `I visit my todo list` is not defined");
+        $this->amOnPage('/index.php');
     }
 
     /**
-     * @Then I should see my todos
+     * @Then I should see the following todos:
      */
-    public function iShouldSeeMyTodos()
+    public function iShouldSeeMyTodos(\Behat\Gherkin\Node\TableNode $todos)
     {
-        throw new \Codeception\Exception\Incomplete("Step `I should see my todos` is not defined");
+        foreach ($todos->getRows() as $index => $row) {
+            if ($index === 0) { // first row to define fields
+                $keys = $row;
+                continue;
+            }
+            $this->see($row[0]);
+        }
+    }
+
+    /**
+     * @Then I should get an error saying the label is empty
+     */
+    public function iShouldGetAnErrorSayingTheLabelIsEmpty()
+    {
+        $this->see("Please enter a label for your todo");
     }
 }

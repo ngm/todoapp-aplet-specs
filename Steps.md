@@ -6,4 +6,4 @@
 * Create CI for products
 * Create selected backlog for next sprint
 * Planning of selected backlog
-* 
+  * good first selected backlog would appear to be whatever is shared across all products

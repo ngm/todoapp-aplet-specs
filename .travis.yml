@@ -1,5 +1,8 @@
 language: php
 
+env:
+  - PRODUCT=ProdA
+
 php:
   - '7.1'
               
@@ -14,4 +17,4 @@ before_script:
   - sleep 5
 
 script:
-  - php vendor/bin/codecept run acceptance
+  - php vendor/bin/codecept run acceptance $(sed 's?\(.*\)?-g \1 ?' eclipse/configs/ProdB.config | tr -d '\r\n')

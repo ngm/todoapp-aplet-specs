@@ -84,4 +84,13 @@ class AcceptanceTester extends \Codeception\Actor
     {
         $this->see("Please enter a label for your todo");
     }
+
+    /**
+     * @When I mark :label as done
+     */
+    public function iMarkAsDone($label)
+    {
+        $this->amOnPage('/index.php');
+        $this->click('MarkDone');
+    }
 }

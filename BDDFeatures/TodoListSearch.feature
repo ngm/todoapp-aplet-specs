@@ -1,4 +1,4 @@
-@TodoListSearch
+@Search
 Feature: Search list of todos
 
 As a user

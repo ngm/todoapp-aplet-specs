@@ -1,4 +1,4 @@
-@TodoListFilter
+@Filter
 Feature: Filter list of todos
 
 As a user

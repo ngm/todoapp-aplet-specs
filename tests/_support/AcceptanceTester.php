@@ -51,7 +51,12 @@ class AcceptanceTester extends \Codeception\Actor
                 $keys = $row;
                 continue;
             }
-            $this->amOnPage('/add.php?label=' . $row[0] . '&status=' . $row[1]);
+            $url = '/add.php?label=' . $row[0];
+            if (isset($row[1]))
+            {
+                $url .=  '&status=' . $row[1];
+            }
+            $this->amOnPage($url);
         }
     }
 

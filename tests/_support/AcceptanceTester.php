@@ -106,4 +106,12 @@ class AcceptanceTester extends \Codeception\Actor
     {
         $this->click($status);
     }
+
+    /**
+     * @Then the filter option should not be present
+     */
+    public function theFilterOptionShouldNotBePresent()
+    {
+        $this->dontSee('Filter');
+    }
 }

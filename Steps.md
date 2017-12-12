@@ -12,5 +12,8 @@
 * However - we need to get the CI matrix set up somehow
 * Kind of also need to show that the first product doesn't have the feature it didn't expect
 * Note: we're using annotative approach, compositional could be another
-* Now implement the feature
-* 
+* Now implement the new feature for ProdC
+* Note at this point that the feature is now present in ProdA, even though it's not configured
+* We need a test to check that it isn't present!
+* This is really important: it helps with the development of our variability implementation
+* We need some way of knowing which optional fields have not been selected

@@ -18,4 +18,6 @@ before_script:
   - sleep 5
 
 script:
-  - php vendor/bin/codecept run acceptance $(sed 's?\(.*\)?-g \1 ?' eclipse/configs/$PRODUCT.config | tr -d '\r\n')
+  - FEATURES=$(sed 's?\(.*\)?-g \1 ?' eclipse/configs/$PRODUCT.config | tr -d '\r\n')
+  - NOTFEATURES=$(comm -13 eclipse/configs/$PRODUCT.config eclipse/configs/optionals.config | sed 's?\(.*\)?-g Not\1 ?' | tr -d '\r\n')
+  - php vendor/bin/codecept run acceptance $FEATURES $NOTFEATURES

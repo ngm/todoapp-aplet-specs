@@ -5,24 +5,29 @@ As a user
 In order to easily find todos
 I want to be able to filter my list of todos
 
-Scenario: Filter list with text that is present in one todo
+Background:
 Given I have created the following todos:
-  | Label                               |
-  | Execute evil plans                  |
-  | Create evil plans strategy document |
+  | Label                               | Status |
+  | Execute evil plans                  | TODO   |
+  | Create evil plans strategy document | DONE   |
+
+Scenario: Filter list for done todos
 When I visit my todo list
-And I filter the list by "strategy"
+And I filter the list by "DONE"
 Then I should see the following todos:
   | Label                               |
   | Create evil plans strategy document |
 
-Scenario: Filter list with text that is present in multiple todos
-Given I have created the following todos:
+Scenario: Filter list for TODO todos
+When I visit my todo list
+And I filter the list by "TODO"
+Then I should see the following todos:
   | Label                               |
   | Execute evil plans                  |
-  | Create evil plans strategy document |
+
+Scenario: Clear filter
 When I visit my todo list
-And I filter the list by "evil"
+And I filter the list by "NO FILTER"
 Then I should see the following todos:
   | Label                               |
   | Execute evil plans                  |

@@ -10,5 +10,7 @@
 * Once we've done the basic features, that covers the first product
 * Now I'll add another feature for a different product
 * However - we need to get the CI matrix set up somehow
-* Kind of to show that the first product doesn't have the feature it didn't expect
+* Kind of also need to show that the first product doesn't have the feature it didn't expect
 * Note: we're using annotative approach, compositional could be another
+* Now implement the feature
+* 

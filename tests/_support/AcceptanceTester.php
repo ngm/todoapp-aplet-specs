@@ -51,7 +51,7 @@ class AcceptanceTester extends \Codeception\Actor
                 $keys = $row;
                 continue;
             }
-            $this->amOnPage('/add.php?label=' . $row[0]);
+            $this->amOnPage('/add.php?label=' . $row[0] . '&status=' . $row[1]);
         }
     }
 
@@ -92,5 +92,13 @@ class AcceptanceTester extends \Codeception\Actor
     {
         $this->amOnPage('/index.php');
         $this->click('MarkDone');
+    }
+
+    /**
+     * @When I filter the list by :status
+     */
+    public function iFilterTheListBy($status)
+    {
+        $this->click($status);
     }
 }

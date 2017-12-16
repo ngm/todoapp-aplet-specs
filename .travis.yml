@@ -13,7 +13,7 @@ install:
 
 before_script:
   - git clone https://github.com/ngm/todoapp-aplet
-  - cp eclipse/configs/$PROUCT.config todoapp-aplet/todo.config
+  - cp eclipse/configs/$PRODUCT.config todoapp-aplet/todo.config
   - php -S localhost:8080 -t todoapp-aplet &
   - phantomjs --webdriver 4444 &
   - sleep 5

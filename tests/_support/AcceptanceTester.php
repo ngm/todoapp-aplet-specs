@@ -138,4 +138,12 @@ class AcceptanceTester extends \Codeception\Actor
             $this->dontSee($row[0]);
         }
     }
+
+    /**
+     * @Then the search option should not be present
+     */
+    public function theSearchOptionShouldNotBePresent()
+    {
+        $this->dontSee('Search:');
+    }
 }

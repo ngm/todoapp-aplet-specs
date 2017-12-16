@@ -3,6 +3,7 @@ language: php
 env:
   - PRODUCT=ProdA
   - PRODUCT=ProdC
+  - PRODUCT=ProdD
 
 php:
   - '7.1'

@@ -15,6 +15,9 @@ And I search the list for "strategy"
 Then I should see the following todos:
   | Label                               |
   | Create evil plans strategy document |
+And I should not see the following todos:
+  | Label                               |
+  | Execute evil plans                  |
 
 Scenario: Search list for text that is present in multiple todos
 Given I have created the following todos:

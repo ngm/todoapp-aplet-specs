@@ -114,4 +114,28 @@ class AcceptanceTester extends \Codeception\Actor
     {
         $this->dontSee('Filter');
     }
+
+    /**
+     * @When I search the list for :searchTerm
+     */
+    public function iSearchTheListFor($searchTerm)
+    {
+        $this->submitForm('#search', [
+            'searchTerm' => $searchTerm
+        ]);
+    }
+
+    /**
+     * @Then I should not see the following todos:
+     */
+    public function iShouldNotSeeTheFollowingTodos(\Behat\Gherkin\Node\TableNode $todos)
+    {
+        foreach ($todos->getRows() as $index => $row) {
+            if ($index === 0) { // first row to define fields
+                $keys = $row;
+                continue;
+            }
+            $this->dontSee($row[0]);
+        }
+    }
 }

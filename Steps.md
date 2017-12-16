@@ -19,3 +19,11 @@
 * We need some way of knowing which optional fields have not been selected
 * Another method of regression tests for features being there that shouldn't be would be screenshots
 - exact/best method is out of scope for now, but the principle is very important
+* OK, so now I've implement the filter feature, and got basic feature reading in place.
+* Next up is to implement the next feature.
+- ok so ProdD has the search feature.  Let's add that next.
+* First add ProductD to the matrix.
+- technically it should get some kind of error, but I think codeception tests won't complain if they don't find a tagged feature.
+- that needs some work - but I guess we can add a bare bones feature as well, something that is 'incomplete'.
+* add the feature - do the same process, just add it, no feature toggle yet
+- how to deal with the combination of search and filter?

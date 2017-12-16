@@ -17,3 +17,5 @@
 * We need a test to check that it isn't present!
 * This is really important: it helps with the development of our variability implementation
 * We need some way of knowing which optional fields have not been selected
+* Another method of regression tests for features being there that shouldn't be would be screenshots
+- exact/best method is out of scope for now, but the principle is very important

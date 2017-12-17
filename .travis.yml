@@ -44,7 +44,7 @@ after_success:
 after_script:
   # copy test report artifact to shared file storage
   - export SSHPASS=$DEPLOY_PASS
-  - sshpass -e scp tests/_output/report.html $DEPLOY_USER@$DEPLOY_HOST:report$PRODUCT.html 
+  - sshpass -e scp -o Stricthostkeychecking=No tests/_output/report.html $DEPLOY_USER@$DEPLOY_HOST:report$PRODUCT.html 
   - |
       if [ "$BUILD_LEADER" = "YES" ]; then
         ./build/deploy_test_artifacts.sh

@@ -27,15 +27,23 @@ script:
   - php vendor/bin/codecept run acceptance $FEATURES $NOTFEATURES --html
 
 after_script:
-  - git config --global user.email "$GIT_EMAIL"
-  - git config --global user.name "$GIT_USERNAME"
-  - git config credential.helper "store --file=.git/credentials"
-  - echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
-  - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
-  - cp tests/_output/report.html tests/_output/report$PRODUCT.html
-  - git fetch origin
-  - git checkout --track origin/gh-pages
-  - cp tests/_output/report$PRODUCT.html .
-  - git add report$PRODUCT.html
-  - git commit -m "Checkin $PRODUCT test report from travis after CI run"
-  - git push
+  # copy test report artifact to shared file storage
+  - export SSHPASS=$DEPLOY_PASS
+  - sshpass -e scp tests/_output/report.html $DEPLOY_USER@$DEPLOY_HOST:report$PRODUCT.html 
+
+jobs:
+  include:
+    - stage: deploy test artifacts
+      script: 
+        - git config --global user.email "$GIT_EMAIL"
+        - git config --global user.name "$GIT_USERNAME"
+        - git config credential.helper "store --file=.git/credentials"
+        - echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
+        - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
+        - git fetch origin
+        - git checkout --track origin/gh-pages
+        - export SSHPASS=$DEPLOY_PASS
+        - sshpass -e scp $DEPLOY_USER@$DEPLOY_HOST:report*.html .
+        - git add report*.html
+        - git commit -m "Checkin test reports from travis after CI run"
+        - git push

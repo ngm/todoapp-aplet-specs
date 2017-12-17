@@ -18,6 +18,7 @@ addons:
 install:
   - composer self-update
   - composer install --prefer-dist
+  - curl -Lo travis_after_all.py https://raw.github.com/dmakhno/travis_after_all/master/travis_after_all.py
 
 before_script:
   - git clone https://github.com/ngm/todoapp-aplet
@@ -31,24 +32,26 @@ script:
   - NOTFEATURES=$(comm -13 <(sort eclipse/configs/$PRODUCT.config) <(sort eclipse/configs/optionals.config) | sed 's?\(.*\)?-g Not\1 ?' | tr -d '\r\n')
   - php vendor/bin/codecept run acceptance $FEATURES $NOTFEATURES --html
 
+
+after_failure:
+  - python travis_after_all.py
+  - export $(cat .to_export_back)
+
+after_success:
+  - python travis_after_all.py
+  - export $(cat .to_export_back)
+
 after_script:
   # copy test report artifact to shared file storage
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp tests/_output/report.html $DEPLOY_USER@$DEPLOY_HOST:report$PRODUCT.html 
+  - |
+      if [ "$BUILD_LEADER" = "NO" ]; then
+        ./deploy_test_artifacts.sh
+      fi
 
-jobs:
-  include:
-    - stage: deploy test artifacts
-      script: 
-        - git config --global user.email "$GIT_EMAIL"
-        - git config --global user.name "$GIT_USERNAME"
-        - git config credential.helper "store --file=.git/credentials"
-        - echo "https://${GITHUB_TOKEN}:@github.com" > .git/credentials
-        - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
-        - git fetch origin
-        - git checkout --track origin/gh-pages
-        - export SSHPASS=$DEPLOY_PASS
-        - sshpass -e scp $DEPLOY_USER@$DEPLOY_HOST:report*.html . -o stricthostkeychecking=no
-        - git add report*.html
-        - git commit -m "Checkin test reports from travis after CI run"
-        - git push
+# not currently using travis Build Stages as I want to execute even if a test job failed
+#jobs:
+# include:
+#   - stage: deploy test artifacts
+#     script: ./deploy_test_artifacts.sh

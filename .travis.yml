@@ -23,3 +23,16 @@ script:
   - FEATURES=$(sed 's?\(.*\)?-g \1 ?' eclipse/configs/$PRODUCT.config | tr -d '\r\n')
   - NOTFEATURES=$(comm -13 <(sort eclipse/configs/$PRODUCT.config) <(sort eclipse/configs/optionals.config) | sed 's?\(.*\)?-g Not\1 ?' | tr -d '\r\n')
   - php vendor/bin/codecept run acceptance $FEATURES $NOTFEATURES --html
+  - cp tests/_output/report.html tests/_output/report$PRODUCT.html
+  - git checkout gh-pages
+  - cp tests/_output/report$PRODUCT.html .
+  - git add report$PRODUCT.html
+  - git commit -m "Checkin from travis after CI run"
+  - git checkout master
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
+  on:
+    branch: gh-pages

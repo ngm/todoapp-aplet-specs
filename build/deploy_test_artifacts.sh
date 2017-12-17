@@ -7,7 +7,7 @@ git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
 git fetch origin
 git checkout --track origin/gh-pages
 export SSHPASS=$DEPLOY_PASS
-sshpass -e scp $DEPLOY_USER@$DEPLOY_HOST:report*.html . -o stricthostkeychecking=no
+sshpass -e scp -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST:report*.html .
 git add report*.html
 git commit -m "Checkin test reports from travis after CI run"
 git push

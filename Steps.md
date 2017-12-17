@@ -35,3 +35,7 @@
 -- however.. having the tests in place allow for refactoring PL implementation with some safety (might be worth showing that?)
 * so we can just tag scenarios.  A feature can map to many scenarios then (and across different BDD feature files).
 * so this shows there is not necessarily a one-to-one mapping between FM features and BDD features
+* so what would come next after getting all features to pass?
+- PL refactoring
+* nice improvements - script to run tests on all products locally, easily check all tests passing after refactor
+* some visualisation of which BDD features are linked to which FM features

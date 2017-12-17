@@ -29,3 +29,9 @@
 - how to deal with the combination of search and filter?
 - also noting that you get to a point where you have to think about feature toggles in your test layer code
 --- this is out of scope for now, but potentially something big to think about
+* OK, so got it all set up on travis to build all products and push the test results.  What's next?
+* look at the failing tests...
+* will mention that best practice implementation is entirely out of scope
+-- however.. having the tests in place allow for refactoring PL implementation with some safety (might be worth showing that?)
+* so we can just tag scenarios.  A feature can map to many scenarios then (and across different BDD feature files).
+* so this shows there is not necessarily a one-to-one mapping between FM features and BDD features

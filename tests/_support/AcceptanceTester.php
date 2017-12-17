@@ -46,15 +46,20 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function iHaveCreatedTheFollowingTodos(\Behat\Gherkin\Node\TableNode $todos)
     {
+        $keys = array();
         foreach ($todos->getRows() as $index => $row) {
             if ($index === 0) { // first row to define fields
                 $keys = $row;
                 continue;
             }
-            $url = '/add.php?label=' . $row[0];
-            if (isset($row[1]))
+            $url = '/add.php?label=' . urlencode($row[0]);
+            if (isset($row[1]) && $keys[1] == 'Status')
             {
-                $url .=  '&status=' . $row[1];
+                $url .=  '&status=' . urlencode($row[1]);
+            }
+            else if (isset($row[1]) && $keys[1] == 'Description')
+            {
+                $url .=  '&description=' . urlencode($row[1]);
             }
             $this->amOnPage($url);
         }
@@ -73,6 +78,7 @@ class AcceptanceTester extends \Codeception\Actor
      */
     public function iShouldSeeMyTodos(\Behat\Gherkin\Node\TableNode $todos)
     {
+        $keys = array();
         foreach ($todos->getRows() as $index => $row) {
             if ($index === 0) { // first row to define fields
                 $keys = $row;
@@ -149,5 +155,24 @@ class AcceptanceTester extends \Codeception\Actor
     public function theSearchOptionShouldNotBePresent()
     {
         $this->dontSee('Search:');
+    }
+
+
+    /**
+     * @When I create a todo with the label :label and description :description
+     */
+    public function iCreateATodoWithTheLabelAndDescription($label, $description)
+    {
+        $this->amOnPage('/add.php?label=' . $label . '&description=' . $description);
+    }
+
+    /**
+     * @Then the todo :label with description :description is added to my todo list
+     */
+    public function theTodoWithDescriptionIsAddedToMyTodoList($label, $description)
+    {
+        $this->amOnPage('/index.php');
+        $this->see($label);
+        $this->see($description);
     }
 }

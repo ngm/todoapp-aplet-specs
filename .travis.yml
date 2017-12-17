@@ -9,6 +9,11 @@ env:
 
 php:
   - '7.1'
+
+addons:
+  apt:
+    packages:
+      - sshpass
               
 install:
   - composer self-update

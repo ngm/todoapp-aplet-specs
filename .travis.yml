@@ -24,6 +24,7 @@ script:
   - NOTFEATURES=$(comm -13 <(sort eclipse/configs/$PRODUCT.config) <(sort eclipse/configs/optionals.config) | sed 's?\(.*\)?-g Not\1 ?' | tr -d '\r\n')
   - php vendor/bin/codecept run acceptance $FEATURES $NOTFEATURES --html
   - cp tests/_output/report.html tests/_output/report$PRODUCT.html
+  - git config --replace-all remote.origin.fetch +refs/heads/*:refs/remotes/origin/*
   - git fetch origin
   - git checkout --track origin/gh-pages
   - cp tests/_output/report$PRODUCT.html .

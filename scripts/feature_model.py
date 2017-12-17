@@ -1,5 +1,6 @@
 import xml.etree.ElementTree as et
 import graphviz as gv
+from os import path
 import argparse
 
 arg_parser = argparse.ArgumentParser(description='Draw dot file from FeatureIDE model.xml')
@@ -34,4 +35,4 @@ graph = gv.Digraph(format="svg")
 for feature in features.getchildren():
     parseFeature(feature, None, graph)
 
-graph.render(filename=args.output_filename)
+graph.render(filename=path.join(args.output_dir, args.output_filename))

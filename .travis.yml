@@ -47,7 +47,7 @@ after_script:
   - sshpass -e scp tests/_output/report.html $DEPLOY_USER@$DEPLOY_HOST:report$PRODUCT.html 
   - |
       if [ "$BUILD_LEADER" = "YES" ]; then
-        ./deploy_test_artifacts.sh
+        ./build/deploy_test_artifacts.sh
       fi
 
 # not currently using travis Build Stages as I want to execute even if a test job failed

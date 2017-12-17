@@ -48,7 +48,7 @@ jobs:
         - git fetch origin
         - git checkout --track origin/gh-pages
         - export SSHPASS=$DEPLOY_PASS
-        - sshpass -e scp $DEPLOY_USER@$DEPLOY_HOST:report*.html .
+        - sshpass -e scp $DEPLOY_USER@$DEPLOY_HOST:report*.html . -o stricthostkeychecking=no
         - git add report*.html
         - git commit -m "Checkin test reports from travis after CI run"
         - git push

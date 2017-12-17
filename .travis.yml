@@ -37,5 +37,5 @@ after_script:
   - git checkout --track origin/gh-pages
   - cp tests/_output/report$PRODUCT.html .
   - git add report$PRODUCT.html
-  - git commit -m "Checkin from travis after CI run"
+  - git commit -m "Checkin $PRODUCT test report from travis after CI run"
   - git push

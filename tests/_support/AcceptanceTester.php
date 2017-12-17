@@ -79,6 +79,10 @@ class AcceptanceTester extends \Codeception\Actor
                 continue;
             }
             $this->see($row[0]);
+            if (isset($keys[1]) && $keys[1] == 'Description')
+            {
+                $this->see($row[1]);
+            }
         }
     }
 

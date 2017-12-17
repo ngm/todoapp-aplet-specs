@@ -27,3 +27,5 @@
 - that needs some work - but I guess we can add a bare bones feature as well, something that is 'incomplete'.
 * add the feature - do the same process, just add it, no feature toggle yet
 - how to deal with the combination of search and filter?
+- also noting that you get to a point where you have to think about feature toggles in your test layer code
+--- this is out of scope for now, but potentially something big to think about

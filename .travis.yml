@@ -33,7 +33,7 @@ before_script:
 script:
   - FEATURES=$(sed 's?\(.*\)?-g \1 ?' eclipse/configs/$PRODUCT.config | tr -d '\r\n')
   - NOTFEATURES=$(comm -13 <(sort eclipse/configs/$PRODUCT.config) <(sort eclipse/configs/optionals.config) | sed 's?\(.*\)?-g Not\1 ?' | tr -d '\r\n')
-  - php vendor/bin/codecept run acceptance $FEATURES $NOTFEATURES --html
+  - php vendor/bin/codecept run acceptance $FEATURES $NOTFEATURES --html --xml
 
 
 after_failure:
@@ -48,6 +48,7 @@ after_script:
   # copy test report artifact to shared file storage
   - export SSHPASS=$DEPLOY_PASS
   - sshpass -e scp -o Stricthostkeychecking=No tests/_output/report.html $DEPLOY_USER@$DEPLOY_HOST:report$PRODUCT.html 
+  - sshpass -e scp -o Stricthostkeychecking=No tests/_output/report.xml $DEPLOY_USER@$DEPLOY_HOST:report$PRODUCT.xml 
   - |
       if [ "$BUILD_LEADER" = "YES" ]; then
         ./build/deploy_test_artifacts.sh

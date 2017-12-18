@@ -4,7 +4,7 @@ mkdir tests/_output/reports
 sshpass -e scp -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST:report*.html tests/_output/reports/
 pip3 install --user gherkin3
 pip3 install --user graphviz
-python3 scripts/fm_augment.py eclipse/model.xml BDDFeatures/ tests/_output/reports/ tests/_output/
+python3 scripts/fm_augment.py eclipse/model.xml BDDFeatures/ tests/_output/reports/ tests/_output/reports
 
 git config --global user.email "$GIT_EMAIL"
 git config --global user.name "$GIT_USERNAME"

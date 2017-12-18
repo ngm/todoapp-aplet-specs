@@ -1,6 +1,6 @@
-@NotSearch
 Feature: Search list of todos is not present
   
+@NotSearch
 Scenario: Search list of todos is not present
 Given I have created the following todos:
   | Label                               | Status |

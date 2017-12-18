@@ -1,6 +1,6 @@
-@NotFilter
 Feature: Filter list of todos is not present
   
+@NotFilter
 Scenario: Filter list of todos is not present
 Given I have created the following todos:
   | Label                               | Status |

@@ -1,4 +1,4 @@
-@Filter
+#@Filter
 Feature: Filter list of todos
 
 As a user
@@ -11,6 +11,7 @@ Given I have created the following todos:
   | Execute evil plans                  | TODO   |
   | Create evil plans strategy document | DONE   |
 
+@Filter
 Scenario: Filter list for done todos
 When I visit my todo list
 And I filter the list by "DONE"
@@ -18,6 +19,7 @@ Then I should see the following todos:
   | Label                               |
   | Create evil plans strategy document |
 
+@Filter
 Scenario: Filter list for TODO todos
 When I visit my todo list
 And I filter the list by "TODO"
@@ -25,6 +27,7 @@ Then I should see the following todos:
   | Label                               |
   | Execute evil plans                  |
 
+@Filter
 Scenario: Clear filter
 When I visit my todo list
 And I filter the list by "NO FILTER"

@@ -1,10 +1,10 @@
-@Search
 Feature: Search list of todos
 
 As a user
 In order to easily find todos
 I want to be able to search my list of todos
 
+@Search
 Scenario: Search list for text that is present in one todo
 Given I have created the following todos:
   | Label                               |
@@ -19,6 +19,7 @@ And I should not see the following todos:
   | Label                               |
   | Execute evil plans                  |
 
+@Search
 Scenario: Search list for text that is present in multiple todos
 Given I have created the following todos:
   | Label                               |

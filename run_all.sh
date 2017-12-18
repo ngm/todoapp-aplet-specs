@@ -15,9 +15,9 @@ do
     cp tests/_output/report.html tests/_output/reports/report$PRODUCT.html
 done
 
+echo ""
 echo "Creating dashboard report..."
-cp templates/index.html tests/_output/reports
-cp templates/product-config-map.png tests/_output/reports
+cp templates/* tests/_output/reports
 
-echo "Generating feature model SVG..."
+echo "- Generating feature model SVG..."
 python3 scripts/fm_augment.py eclipse/model.xml BDDFeatures/ tests/_output/reports/ tests/_output/reports/

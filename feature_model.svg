@@ -40,7 +40,7 @@
 </g>
 <!-- 5aef5eb26c28650c5c94078f21d5cbc0da2877644a7dcee42b9e06b7f74175de -->
 <g id="node3" class="node"><title>5aef5eb26c28650c5c94078f21d5cbc0da2877644a7dcee42b9e06b7f74175de</title>
-<polygon fill="none" stroke="#000000" points="447.25,-196 346.75,-196 346.75,-160 447.25,-160 447.25,-196"/>
+<polygon fill="none" stroke="#00cc00" points="447.25,-196 346.75,-196 346.75,-160 447.25,-160 447.25,-196"/>
 <text text-anchor="middle" x="397" y="-174.3" font-family="Times,serif" font-size="14.00">S: List of todos</text>
 </g>
 <!-- cluster_aa76db76d4557e0ff7e90254b2b1fd6c55a35130beb3ab9dc0eed76f9aea07bd&#45;&gt;5aef5eb26c28650c5c94078f21d5cbc0da2877644a7dcee42b9e06b7f74175de -->
@@ -82,19 +82,19 @@
 </g>
 <!-- 620c083f7a52cd315c8d2898c3454a77ed5d93409f841f599c14e40c9028019b -->
 <g id="node7" class="node"><title>620c083f7a52cd315c8d2898c3454a77ed5d93409f841f599c14e40c9028019b</title>
-<polygon fill="none" stroke="#000000" points="156,-196 18,-196 18,-160 156,-160 156,-196"/>
+<polygon fill="none" stroke="#00cc00" points="156,-196 18,-196 18,-160 156,-160 156,-196"/>
 <text text-anchor="middle" x="87" y="-174.3" font-family="Times,serif" font-size="14.00">S: Add one&#45;word todo</text>
 </g>
 <!-- cluster_cb1c899039f42ef9b8a2a92e8b7e8b0ce5bd041f9f7e268baaaef4bad3db4a40&#45;&gt;620c083f7a52cd315c8d2898c3454a77ed5d93409f841f599c14e40c9028019b -->
 <!-- 933135aa7ffab8b5a58210f7e72988352f4530cbc70c112d6e8bda743bd674ec -->
 <g id="node8" class="node"><title>933135aa7ffab8b5a58210f7e72988352f4530cbc70c112d6e8bda743bd674ec</title>
-<polygon fill="none" stroke="#000000" points="164,-124 16,-124 16,-88 164,-88 164,-124"/>
+<polygon fill="none" stroke="#00cc00" points="164,-124 16,-124 16,-88 164,-88 164,-124"/>
 <text text-anchor="middle" x="90" y="-102.3" font-family="Times,serif" font-size="14.00">S: Add multi&#45;word todo</text>
 </g>
 <!-- 620c083f7a52cd315c8d2898c3454a77ed5d93409f841f599c14e40c9028019b&#45;&gt;933135aa7ffab8b5a58210f7e72988352f4530cbc70c112d6e8bda743bd674ec -->
 <!-- 50e6b43bd43948f8b829ba64ac0e95704b1be32ea3aa14157cb5bc53caa32c82 -->
 <g id="node9" class="node"><title>50e6b43bd43948f8b829ba64ac0e95704b1be32ea3aa14157cb5bc53caa32c82</title>
-<polygon fill="none" stroke="#000000" points="143.25,-52 22.75,-52 22.75,-16 143.25,-16 143.25,-52"/>
+<polygon fill="none" stroke="#00cc00" points="143.25,-52 22.75,-52 22.75,-16 143.25,-16 143.25,-52"/>
 <text text-anchor="middle" x="83" y="-30.3" font-family="Times,serif" font-size="14.00">S: Add empty todo</text>
 </g>
 <!-- 933135aa7ffab8b5a58210f7e72988352f4530cbc70c112d6e8bda743bd674ec&#45;&gt;50e6b43bd43948f8b829ba64ac0e95704b1be32ea3aa14157cb5bc53caa32c82 -->
@@ -106,13 +106,13 @@
 </g>
 <!-- ee23df311d75aa53d551430b41d7104731d5c5e0cae0fd27a665d71a51ac9114 -->
 <g id="node12" class="node"><title>ee23df311d75aa53d551430b41d7104731d5c5e0cae0fd27a665d71a51ac9114</title>
-<polygon fill="none" stroke="#000000" points="322,-196 188,-196 188,-160 322,-160 322,-196"/>
+<polygon fill="none" stroke="#00cc00" points="322,-196 188,-196 188,-160 322,-160 322,-196"/>
 <text text-anchor="middle" x="255" y="-174.3" font-family="Times,serif" font-size="14.00">S: Mark todo as done</text>
 </g>
 <!-- cluster_f7ee53048eeb669d5bc79f3a6a33278e2d68851d893c3c5a6662634dd40c094a&#45;&gt;ee23df311d75aa53d551430b41d7104731d5c5e0cae0fd27a665d71a51ac9114 -->
 <!-- todoapp -->
 <g id="node13" class="node"><title>todoapp</title>
-<polygon fill="#cccccc" stroke="green" points="557.5,-484 498.5,-484 498.5,-448 557.5,-448 557.5,-484"/>
+<polygon fill="#ffcccc" stroke="red" points="557.5,-484 498.5,-484 498.5,-448 557.5,-448 557.5,-484"/>
 <text text-anchor="middle" x="528" y="-462.3" font-family="Times,serif" font-size="14.00">todoapp</text>
 </g>
 <!-- todoapp&#45;&gt;TodoManagement -->
@@ -132,7 +132,7 @@
 </g>
 <!-- Filter -->
 <g id="node24" class="node"><title>Filter</title>
-<polygon fill="white" stroke="green" points="737,-412 683,-412 683,-376 737,-376 737,-412"/>
+<polygon fill="#ffeeee" stroke="red" points="737,-412 683,-412 683,-376 737,-376 737,-412"/>
 <text text-anchor="middle" x="710" y="-390.3" font-family="Times,serif" font-size="14.00">Filter</text>
 </g>
 <!-- todoapp&#45;&gt;Filter -->
@@ -168,19 +168,19 @@
 </g>
 <!-- 60483ec71d140c6aeca8ab1915e3ab5d57e2c2e4ea8e60eeeee50ed8d474d469 -->
 <g id="node18" class="node"><title>60483ec71d140c6aeca8ab1915e3ab5d57e2c2e4ea8e60eeeee50ed8d474d469</title>
-<polygon fill="none" stroke="#000000" points="674.25,-196 471.75,-196 471.75,-160 674.25,-160 674.25,-196"/>
+<polygon fill="none" stroke="#00cc00" points="674.25,-196 471.75,-196 471.75,-160 674.25,-160 674.25,-196"/>
 <text text-anchor="middle" x="573" y="-174.3" font-family="Times,serif" font-size="14.00">S: Add todo with description field</text>
 </g>
 <!-- cluster_e7f4fa8ba09627a014ed71ab93f3f0036cc0aec1597b2b703f4ebb730e97b6b3&#45;&gt;60483ec71d140c6aeca8ab1915e3ab5d57e2c2e4ea8e60eeeee50ed8d474d469 -->
 <!-- d7b26dfadaac7ae4bfcf55e565691c9a4860d515a5c5797d3f2d89da5845e7e1 -->
 <g id="node19" class="node"><title>d7b26dfadaac7ae4bfcf55e565691c9a4860d515a5c5797d3f2d89da5845e7e1</title>
-<polygon fill="none" stroke="#000000" points="666,-124 474,-124 474,-88 666,-88 666,-124"/>
+<polygon fill="none" stroke="#00cc00" points="666,-124 474,-124 474,-88 666,-88 666,-124"/>
 <text text-anchor="middle" x="570" y="-102.3" font-family="Times,serif" font-size="14.00">S: List of todos with description</text>
 </g>
 <!-- 60483ec71d140c6aeca8ab1915e3ab5d57e2c2e4ea8e60eeeee50ed8d474d469&#45;&gt;d7b26dfadaac7ae4bfcf55e565691c9a4860d515a5c5797d3f2d89da5845e7e1 -->
 <!-- Search -->
 <g id="node20" class="node"><title>Search</title>
-<polygon fill="white" stroke="green" points="737,-340 683,-340 683,-304 737,-304 737,-340"/>
+<polygon fill="#ffeeee" stroke="red" points="737,-340 683,-340 683,-304 737,-304 737,-340"/>
 <text text-anchor="middle" x="710" y="-318.3" font-family="Times,serif" font-size="14.00">Search</text>
 </g>
 <!-- cluster_49c266baaaa70981ea188fa714d5c40cf13830d786a861c9943ae0d26a7f3fe9 -->
@@ -191,13 +191,13 @@
 </g>
 <!-- aa14ce3f53c56da9de88a81af6499da34a0b4bba45e0785a36d00024172827b6 -->
 <g id="node22" class="node"><title>aa14ce3f53c56da9de88a81af6499da34a0b4bba45e0785a36d00024172827b6</title>
-<polygon fill="none" stroke="#000000" points="982.25,-196 705.75,-196 705.75,-160 982.25,-160 982.25,-196"/>
+<polygon fill="none" stroke="#ff0000" points="982.25,-196 705.75,-196 705.75,-160 982.25,-160 982.25,-196"/>
 <text text-anchor="middle" x="844" y="-174.3" font-family="Times,serif" font-size="14.00">S: Search list for text that is present in one todo</text>
 </g>
 <!-- cluster_49c266baaaa70981ea188fa714d5c40cf13830d786a861c9943ae0d26a7f3fe9&#45;&gt;aa14ce3f53c56da9de88a81af6499da34a0b4bba45e0785a36d00024172827b6 -->
 <!-- 9380f0cdc52b2f715dbad87327c6412da69ce5a2820624fc0d0e78add226a69e -->
 <g id="node23" class="node"><title>9380f0cdc52b2f715dbad87327c6412da69ce5a2820624fc0d0e78add226a69e</title>
-<polygon fill="none" stroke="#000000" points="1006,-124 698,-124 698,-88 1006,-88 1006,-124"/>
+<polygon fill="none" stroke="#ff0000" points="1006,-124 698,-124 698,-88 1006,-88 1006,-124"/>
 <text text-anchor="middle" x="852" y="-102.3" font-family="Times,serif" font-size="14.00">S: Search list for text that is present in multiple todos</text>
 </g>
 <!-- aa14ce3f53c56da9de88a81af6499da34a0b4bba45e0785a36d00024172827b6&#45;&gt;9380f0cdc52b2f715dbad87327c6412da69ce5a2820624fc0d0e78add226a69e -->
@@ -214,19 +214,19 @@
 </g>
 <!-- 57ee0db7e0debeea824ad0247d6046b299157a31d53b24442a13a7f9c2453d98 -->
 <g id="node26" class="node"><title>57ee0db7e0debeea824ad0247d6046b299157a31d53b24442a13a7f9c2453d98</title>
-<polygon fill="none" stroke="#000000" points="1197,-268 1033,-268 1033,-232 1197,-232 1197,-268"/>
+<polygon fill="none" stroke="#00cc00" points="1197,-268 1033,-268 1033,-232 1197,-232 1197,-268"/>
 <text text-anchor="middle" x="1115" y="-246.3" font-family="Times,serif" font-size="14.00">S: Filter list for done todos</text>
 </g>
 <!-- cluster_638e249f4a15ebb84957da130701d138a6e06d88dceeaa2e6dcd91db70cc1381&#45;&gt;57ee0db7e0debeea824ad0247d6046b299157a31d53b24442a13a7f9c2453d98 -->
 <!-- 1d4214cc78a7703e6048a86fb7d13ac5284eba9525686f04adbe4138bd0d0a2b -->
 <g id="node27" class="node"><title>1d4214cc78a7703e6048a86fb7d13ac5284eba9525686f04adbe4138bd0d0a2b</title>
-<polygon fill="none" stroke="#000000" points="1205.25,-196 1030.75,-196 1030.75,-160 1205.25,-160 1205.25,-196"/>
+<polygon fill="none" stroke="#00cc00" points="1205.25,-196 1030.75,-196 1030.75,-160 1205.25,-160 1205.25,-196"/>
 <text text-anchor="middle" x="1118" y="-174.3" font-family="Times,serif" font-size="14.00">S: Filter list for TODO todos</text>
 </g>
 <!-- 57ee0db7e0debeea824ad0247d6046b299157a31d53b24442a13a7f9c2453d98&#45;&gt;1d4214cc78a7703e6048a86fb7d13ac5284eba9525686f04adbe4138bd0d0a2b -->
 <!-- 4fe1c9c9f27177bbeab9258a5ac83b6d13d9e504d617c3bb5c099b393e73c586 -->
 <g id="node28" class="node"><title>4fe1c9c9f27177bbeab9258a5ac83b6d13d9e504d617c3bb5c099b393e73c586</title>
-<polygon fill="none" stroke="#000000" points="1142.25,-124 1051.75,-124 1051.75,-88 1142.25,-88 1142.25,-124"/>
+<polygon fill="none" stroke="#00cc00" points="1142.25,-124 1051.75,-124 1051.75,-88 1142.25,-88 1142.25,-124"/>
 <text text-anchor="middle" x="1097" y="-102.3" font-family="Times,serif" font-size="14.00">S: Clear filter</text>
 </g>
 <!-- 1d4214cc78a7703e6048a86fb7d13ac5284eba9525686f04adbe4138bd0d0a2b&#45;&gt;4fe1c9c9f27177bbeab9258a5ac83b6d13d9e504d617c3bb5c099b393e73c586 -->

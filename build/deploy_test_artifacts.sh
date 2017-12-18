@@ -2,8 +2,8 @@
 export SSHPASS=$DEPLOY_PASS
 mkdir tests/_output/reports
 sshpass -e scp -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST:report*.html tests/_output/reports/
-pip3 install gherkin3
-pip3 install graphviz
+pip3 install --user gherkin3
+pip3 install --user graphviz
 python3 scripts/fm_augment.py eclipse/model.xml BDDFeatures/ tests/_output/reports/ tests/_output/
 
 git config --global user.email "$GIT_EMAIL"

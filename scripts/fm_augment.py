@@ -11,7 +11,7 @@ import pprint
 arg_parser = argparse.ArgumentParser(description='Draw dot file from FeatureIDE model.xml')
 arg_parser.add_argument('model_xml_file', help="Location of the model XML file")
 arg_parser.add_argument('features_dir', help="Location of the feature files")
-arg_parser.add_argument('test_results_file', help="Location of the test results")
+arg_parser.add_argument('reports_dir', help="Location of the test results files for products")
 arg_parser.add_argument('output_dir', help="Location where the output file should be rendered")
 arg_parser.add_argument('--output_filename', default="feature_model", help="Name to use for the output file")
 
@@ -40,10 +40,11 @@ for feature_file in listdir(args.features_dir):
 def parseFeature(feature, parent, graph, test_results):
     feature_name = feature.get("name")
     has_failed_test = False
-    fill_color = "white"
+    fillcolor = "white"
 
     for child in feature.getchildren():
-        has_failed_test = parseFeature(child, feature, graph, test_results)
+        child_has_failed = parseFeature(child, feature, graph, test_results)
+        has_failed_test = has_failed_test or child_has_failed
 
     # add gherkin nodes
     if feature_name in tags:
@@ -69,14 +70,19 @@ def parseFeature(feature, parent, graph, test_results):
                 previous = piece_hash
 
     # add fmfeature node
-    fillcolor = "white"
     line_color = "green"
     if feature.get("abstract") is not None:
         fillcolor = "#cccccc"
-    if has_failed_test is True:
-        fillcolor = "#ffeeee"
-        line_color = "red"
+        if has_failed_test is True:
+            fillcolor = "#ffcccc"
+            line_color = "red"
+    else:
+        if has_failed_test is True:
+            fillcolor = "#ffeeee"
+            line_color = "red"
     graph.node(feature_name, feature_name, fillcolor=fillcolor, style='filled', shape='box', color=line_color)
+
+    # add edge to parent
     if parent is not None:
         parent_name = parent.get("name")
         arrowhead = "odot"
@@ -87,18 +93,25 @@ def parseFeature(feature, parent, graph, test_results):
     return has_failed_test
 
 # Parse tests results
-test_results_file = args.test_results_file #"../tests/_output/report.xml"
-tree = et.parse(test_results_file)
-root = tree.getroot()
-acceptance_suite = root.find('testsuite')
+# For all product reports, go through results
+# If there's a failure in any product for a given feature, that's a failure for the PL.
+pl_test_results = {}
+xml_files = [file for file in listdir(args.reports_dir) if file.endswith(".xml")]
+for test_results_file in xml_files:
+    file_path = path.join(args.reports_dir, test_results_file)
+    tree = et.parse(file_path)
+    root = tree.getroot()
+    acceptance_suite = root.find('testsuite')
 
-test_results = {}
-for testcase in acceptance_suite:
-    scenario_name = testcase.get("feature")
-    passed = True
-    if testcase.find("failure") is not None:
-        passed = False
-    test_results[scenario_name] = passed
+    for testcase in acceptance_suite:
+        scenario_name = testcase.get("feature")
+        passed = True
+        if testcase.find("failure") is not None:
+            passed = False
+        if scenario_name not in pl_test_results:
+            pl_test_results[scenario_name] = True
+        pl_test_results[scenario_name] = pl_test_results[scenario_name] and passed
+
 
 # Parse feature model
 tree = et.parse(args.model_xml_file)
@@ -107,6 +120,6 @@ features = root.find('struct')
 graph = gv.Digraph(format="svg")
 
 for feature in features.getchildren():
-    parseFeature(feature, None, graph, test_results)
+    parseFeature(feature, None, graph, pl_test_results)
 
 graph.render(filename=path.join(args.output_dir, args.output_filename))

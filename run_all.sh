@@ -18,6 +18,7 @@ do
     mkdir build/lektor/content/products/$PRODUCT
     cp build/lektor/helpers/product_contents.lr build/lektor/content/products/$PRODUCT/contents.lr
     sed -i "s/<<PRODUCT>>/$PRODUCT/g" build/lektor/content/products/$PRODUCT/contents.lr
+    sed -i "s/<<PROJECT>>/SuperTodo PL/g" build/lektor/aplet.lektorproject
     cp tests/_output/report.html build/lektor/content/products/$PRODUCT/report$PRODUCT.html
 done
 

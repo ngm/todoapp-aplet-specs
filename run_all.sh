@@ -2,6 +2,8 @@
 
 export APP_DIR=/home/neil/Code/todoapp-aplet/
 mkdir tests/_output/reports
+rm -rf build/lektor
+cp -R ~/Code/aplet-lektor/ build/lektor/
 
 for PRODUCT in "ProdA" "ProdB" "ProdC" "ProdD" "ProdE"
 do
@@ -13,11 +15,16 @@ do
     cp tests/_output/report.json tests/_output/reports/report$PRODUCT.json
     cp tests/_output/report.xml tests/_output/reports/report$PRODUCT.xml
     cp tests/_output/report.html tests/_output/reports/report$PRODUCT.html
+    mkdir build/lektor/content/products/$PRODUCT
+    cp build/lektor/helpers/product_contents.lr build/lektor/content/products/$PRODUCT/contents.lr
+    sed -i "s/<<PRODUCT>>/$PRODUCT/g" build/lektor/content/products/$PRODUCT/contents.lr
+    cp tests/_output/report.html build/lektor/content/products/$PRODUCT/report$PRODUCT.html
 done
 
 echo ""
-echo "Creating dashboard report..."
-cp templates/* tests/_output/reports
-
 echo "- Generating feature model SVG..."
-python3 scripts/fm_augment.py eclipse/model.xml BDDFeatures/ tests/_output/reports/ tests/_output/reports/
+python3 scripts/fm_augment.py eclipse/model.xml BDDFeatures/ tests/_output/reports/ build/lektor/content/
+
+echo "- Building site"
+cd build/lektor/
+lektor build -O out

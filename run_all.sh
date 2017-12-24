@@ -5,6 +5,7 @@ mkdir tests/_output/reports
 rm -rf build/lektor
 cp -R ~/Code/aplet-lektor/ build/lektor/
 
+# TODO: don't hardcode product names
 for PRODUCT in "ProdA" "ProdB" "ProdC" "ProdD" "ProdE"
 do
     cp eclipse/configs/$PRODUCT.config $APP_DIR/todo.config
@@ -20,6 +21,13 @@ do
     sed -i "s/<<PRODUCT>>/$PRODUCT/g" build/lektor/content/products/$PRODUCT/contents.lr
     sed -i "s/<<PROJECT>>/SuperTodo PL/g" build/lektor/aplet.lektorproject
     cp tests/_output/report.html build/lektor/content/products/$PRODUCT/report$PRODUCT.html
+    python3 scripts/product_has_failed.py tests/_output/reports/ $PRODUCT
+    if [ $? -eq 0 ]; then
+        sed -i "s/<<PASS_STATUS>>/true/g" build/lektor/content/products/$PRODUCT/contents.lr;
+    else
+        sed -i "s/<<PASS_STATUS>>/false/g" build/lektor/content/products/$PRODUCT/contents.lr;
+    fi
+
     python3 scripts/fm_augment.py eclipse/model.xml BDDFeatures/ tests/_output/reports/ build/lektor/content/products/$PRODUCT/ --productconfig=eclipse/configs/$PRODUCT.config
 done
 

@@ -14,6 +14,7 @@ arg_parser.add_argument('features_dir', help="Location of the feature files")
 arg_parser.add_argument('reports_dir', help="Location of the test results files for products")
 arg_parser.add_argument('output_dir', help="Location where the output file should be rendered")
 arg_parser.add_argument('--output_filename', default="feature_model", help="Name to use for the output file")
+arg_parser.add_argument('--productconfig', default="all", help="")
 
 args = arg_parser.parse_args()
 
@@ -37,13 +38,18 @@ for feature_file in listdir(args.features_dir):
                 tags[tag_name] = []
             tags[tag_name].append("S: " + scenario['name'])
 
-def parseFeature(feature, parent, graph, test_results):
+def parseFeature(feature, parent, graph, test_results, product_features):
     feature_name = feature.get("name")
+    feature_is_abstract = feature.get("abstract") is not None
+
     has_failed_test = False
     fillcolor = "white"
 
+    if product_features and feature_name not in product_features and not feature_is_abstract:
+        return has_failed_test and False
+
     for child in feature.getchildren():
-        child_has_failed = parseFeature(child, feature, graph, test_results)
+        child_has_failed = parseFeature(child, feature, graph, test_results, product_features)
         has_failed_test = has_failed_test or child_has_failed
 
     # add gherkin nodes
@@ -71,7 +77,7 @@ def parseFeature(feature, parent, graph, test_results):
 
     # add fmfeature node
     line_color = "green"
-    if feature.get("abstract") is not None:
+    if feature_is_abstract:
         fillcolor = "#cccccc"
         if has_failed_test is True:
             fillcolor = "#ffcccc"
@@ -80,6 +86,7 @@ def parseFeature(feature, parent, graph, test_results):
         if has_failed_test is True:
             fillcolor = "#ffeeee"
             line_color = "red"
+
     graph.node(feature_name, feature_name, fillcolor=fillcolor, style='filled', shape='box', color=line_color)
 
     # add edge to parent
@@ -116,10 +123,22 @@ for test_results_file in xml_files:
 # Parse feature model
 tree = et.parse(args.model_xml_file)
 root = tree.getroot()
-features = root.find('struct')
+features_root = root.find('struct')
 graph = gv.Digraph(format="svg")
 
-for feature in features.getchildren():
-    parseFeature(feature, None, graph, pl_test_results)
+
+# prefilter by features for product if we have a product flag
+product_features = []
+if args.productconfig is not "all":
+    # features = features filtered by product config
+    with open(args.productconfig) as product_config_file:
+        for config_option in product_config_file:
+            print(config_option.strip())
+            product_features.append(config_option.strip())
+
+    product_features.append("todoapp")
+
+for feature in features_root.getchildren():
+    parseFeature(feature, None, graph, pl_test_results, product_features)
 
 graph.render(filename=path.join(args.output_dir, args.output_filename))

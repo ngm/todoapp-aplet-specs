@@ -20,6 +20,7 @@ do
     sed -i "s/<<PRODUCT>>/$PRODUCT/g" build/lektor/content/products/$PRODUCT/contents.lr
     sed -i "s/<<PROJECT>>/SuperTodo PL/g" build/lektor/aplet.lektorproject
     cp tests/_output/report.html build/lektor/content/products/$PRODUCT/report$PRODUCT.html
+    python3 scripts/fm_augment.py eclipse/model.xml BDDFeatures/ tests/_output/reports/ build/lektor/content/products/$PRODUCT/ --productconfig=eclipse/configs/$PRODUCT.config
 done
 
 echo ""
